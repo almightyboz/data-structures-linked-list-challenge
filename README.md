@@ -21,7 +21,7 @@ Linked Lists are also efficient when inserting nodes in the middle of a collecti
 
 ## Restrictions
 
-In the following releases do not use Ruby's built in data structures, including Arrays, Hashes or Sets in your implementation. Also do not use your FixedArray — believe it or not, it isn't necessary!
+In the following releases do not use Ruby's built in data structures, including Arrays, Hashes or Sets in your implementation. The only structures you should use are objects from classes _you_ define. You may also use the FixedArray class if you think you need to.
 
 The _elements_ (aka values) you store in your list may be any kind of object, the type of values you store in your list shouldn't affect the implementation.
 
