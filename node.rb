@@ -17,7 +17,7 @@ class Node
     @front_pointer = front_node
     @back_pointer = back_node
 
-    back_node.
+
   end
 
   def remove_after
