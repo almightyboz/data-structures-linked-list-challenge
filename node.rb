@@ -9,15 +9,25 @@ class Node
     @back_pointer = nil
   end
 
-  # from perspective of node being inserted
-  def insert_after(other_node)
-    back_node = other_node
-    front_node = other_node.front_pointer
+  def insert_after(x)
+    a = self
+    b = a.front_pointer
+
+    # back_node = x
+    # front_node = x.front_pointer
 
     @front_pointer = front_node
     @back_pointer = back_node
 
+    front_node.reassign_front_pointer(self)
+  end
 
+  def reassign_back_pointer(other_node)
+    @front_pointer = other_node
+  end
+
+  def reassign_front_pointer(other_node)
+    @back_pointer = other_node
   end
 
   def remove_after
