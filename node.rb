@@ -1,3 +1,5 @@
+require 'pry'
+
 class Node
 
   attr_accessor :front_pointer, :back_pointer
@@ -9,25 +11,28 @@ class Node
     @back_pointer = nil
   end
 
-  def insert_after(x)
-    a = self
+  # PROBLEMS WITH THIS METHOD
+  # cannot call assign_back_pointer if there isn't already a pointer there
+  # BUT WHY THO
+  # ANSWER(?) THAT'S THE LL's respnosibility
+  def insert_after(other_node)
+    # don't need to change @back_pointer
+    #x = to be inserted
+    # a = self
     b = a.front_pointer
 
-    # back_node = x
-    # front_node = x.front_pointer
-
-    @front_pointer = front_node
-    @back_pointer = back_node
-
-    front_node.reassign_front_pointer(self)
-  end
-
-  def reassign_back_pointer(other_node)
+    b.assign_back_pointer(other_node)
+    other_node.assign_front_pointer(b)
     @front_pointer = other_node
+    other_node.assign_back_pointer(self)
   end
 
-  def reassign_front_pointer(other_node)
+  def assign_back_pointer(other_node)
     @back_pointer = other_node
+  end
+
+  def assign_front_pointer(other_node)
+    @front_pointer = other_node
   end
 
   def remove_after

@@ -44,7 +44,8 @@ class LinkedList
   # find penultimate?
   def remove_last
     unless empty?
-
+      last_node = find_last()
+      last_node.remove_after
     end
   end
 
