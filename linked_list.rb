@@ -1,5 +1,5 @@
 require_relative 'node'
-
+# how should i handle empty lists?
 class LinkedList
 
   attr_reader :first
@@ -41,12 +41,21 @@ class LinkedList
     end
   end
 
-  # find penultimate?
   def remove_last
     unless empty?
       last_node = find_last()
       last_node.remove_after
     end
+  end
+
+  def get(index)
+
+  end
+
+  def set(index, element)
+  end
+
+  def insert(index, element)
   end
 
 end

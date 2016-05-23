@@ -11,22 +11,6 @@ class Node
     @back_pointer = nil
   end
 
-  # PROBLEMS WITH THIS METHOD
-  # cannot call assign_back_pointer if there isn't already a pointer there
-  # BUT WHY THO
-  # ANSWER(?) THAT'S THE LL's respnosibility
-  def insert_after(other_node)
-    # don't need to change @back_pointer
-    #x = to be inserted
-    # a = self
-    b = a.front_pointer
-
-    b.assign_back_pointer(other_node)
-    other_node.assign_front_pointer(b)
-    @front_pointer = other_node
-    other_node.assign_back_pointer(self)
-  end
-
   def assign_back_pointer(other_node)
     @back_pointer = other_node
   end
@@ -43,4 +27,28 @@ class Node
     @back_pointer = nil
   end
 
+  # PROBLEMS WITH THIS METHOD
+  # cannot call assign_back_pointer if there isn't already a pointer there
+  # BUT WHY THO
+  # ANSWER(?) THAT'S THE LL's respnosibility
+  def insert_after(other_node)
+    # don't need to change @back_pointer
+    #x = to be inserted
+    # a = self
+    if @front_pointer
+      front = @front_pointer
+      self.assign_front_pointer(other_node)
+      other_node.assign_front_pointer(front)
+      front.assign_back_pointer(other_node)
+      other_node.assign_back_pointer(self)
+    else
+      # de facto creating new LL
+      # does this take functionality awawy from the LL class?
+      # will it fuck it up down the road?
+      self.assign_front_pointer(other_node)
+      other_node.assign_back_pointer(self)
+    end
+  end
+
 end
+

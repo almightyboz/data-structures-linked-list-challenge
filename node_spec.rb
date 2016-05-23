@@ -6,7 +6,6 @@ describe Node do
   let(:other_node) { Node.new("linkage") }
   let(:third_node) { Node.new("testage") }
 
-
   it "instantiates a new object of a type Node with a value" do
     expect(test_node).to be_a Node
     expect(test_node.value).not_to eq("frog")
