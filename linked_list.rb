@@ -9,16 +9,21 @@ class LinkedList
   end
 
   def insert_first(element)
-    new_first = Node.new(element)
-    new_first.front_pointer = @first
-    @first = new_first
+    if @first
+      new_first = Node.new(element)
+      new_first.assign_front_pointer(@first)
+      @first.assign_back_pointer(new_first)
+      @first = new_first
+    else
+      @first = Node.new(element)
+    end
   end
 
   def remove_first
     @first = @first.front_pointer
   end
 
-  # unfuck recursion?
+  # recursion, be careful
   def find_last(node=@first)
     if node.front_pointer == nil
       return node
@@ -48,8 +53,15 @@ class LinkedList
     end
   end
 
-  def get(index)
-
+  def get(index, node=@first)
+    counter = 0
+    if counter == index
+      return node
+    else
+      counter += 1
+      node = node.front_pointer
+      get(index, node)
+    end
   end
 
   def set(index, element)
