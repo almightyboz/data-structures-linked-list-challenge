@@ -38,15 +38,26 @@ describe LinkedList do
     expect(test_list.find_last.value).to eq("stuff")
   end
 
-  it "removes the last node from the linked list" do
+  it "removes the last node from an otherwise empty linked list" do
     test_list.insert_last("cat")
-    expect(test_list.remove_last).to eq(nil)
+    test_list.remove_last
+    expect(test_list.empty?).to eq(true)
+    expect(test_list.get(0)).to eq(nil)
+  end
+
+  it "removes the last node from a linked list with more than one node" do
+    test_list.insert_first("data")
+    test_list.insert_first("tata")
+    test_list.insert_last("rata")
+    expect(test_list.size).to eq(3)
+    test_list.remove_last
+    expect(test_list.get(1).value).to eq("data")
+    expect(test_list.size).to eq(2)
   end
 
   it "retrieves an node at a particular index" do
     test_list.insert_first("Neutral Milk Hotel")
     test_list.insert_first("Dan Deacon")
-    # expect(test_list.get(1).value).to eq("Dan Deacon")
     expect(test_list.get(1).value).to eq("Neutral Milk Hotel")
   end
 
@@ -66,5 +77,12 @@ describe LinkedList do
     expect(test_list.get(2).value).to eq "data"
   end
 
+  it "returns the number of nodes in the list" do
+    test_list.insert_first("stuff")
+    test_list.insert_last("more stuff")
+    expect(test_list.size).to eq(2)
+    test_list.insert_first("yet more stuff")
+    expect(test_list.size).to eq(3)
+  end
 
 end
