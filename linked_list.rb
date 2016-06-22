@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 require_relative 'node'
 # how should i handle empty lists?
 class LinkedList
@@ -57,6 +57,7 @@ class LinkedList
     end
   end
 
+  # output is the particular node object
   def get(index, node=@first, counter=0)
     counter = counter
     if counter == index
@@ -69,9 +70,14 @@ class LinkedList
   end
 
   def set(index, element)
+    node_to_change = get(index)
+    node_to_change.value = element
   end
 
   def insert(index, element)
+    node_to_insert = Node.new(element)
+    bump_down = self.get(index - 1)
+    bump_down.insert_after(node_to_insert)
   end
 
 end

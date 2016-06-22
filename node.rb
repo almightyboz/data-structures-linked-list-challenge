@@ -2,8 +2,7 @@ require 'pry'
 
 class Node
 
-  attr_accessor :front_pointer, :back_pointer
-  attr_reader :value
+  attr_accessor :front_pointer, :back_pointer, :value
 
   def initialize(element)
     @value = element
