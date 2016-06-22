@@ -38,7 +38,15 @@ describe LinkedList do
   end
 
   it "removes the last value from the linked list" do
+    test_list.insert_last("cat")
+    expect(test_list.remove_last).to eq(nil)
+  end
 
+  it "retrieves an element at a particular index" do
+    test_list.insert_first("Neutral Milk Hotel")
+    test_list.insert_first("Dan Deacon")
+    # expect(test_list.get(1).value).to eq("Dan Deacon")
+    expect(test_list.get(1).value).to eq("Neutral Milk Hotel")
   end
 
 end

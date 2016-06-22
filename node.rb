@@ -11,12 +11,12 @@ class Node
     @back_pointer = nil
   end
 
-  def assign_back_pointer(other_node)
-    @back_pointer = other_node
-  end
-
   def assign_front_pointer(other_node)
     @front_pointer = other_node
+  end
+
+  def assign_back_pointer(other_node)
+    @back_pointer = other_node
   end
 
   def remove_after
@@ -44,7 +44,7 @@ class Node
     else
       # de facto creating new LL
       # does this take functionality awawy from the LL class?
-      # will it fuck it up down the road?
+      # will it mess it up down the road?
       self.assign_front_pointer(other_node)
       other_node.assign_back_pointer(self)
     end
