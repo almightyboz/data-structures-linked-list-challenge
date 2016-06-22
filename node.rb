@@ -2,8 +2,8 @@ require 'pry'
 
 class Node
 
-  attr_accessor :front_pointer, :back_pointer
-  attr_reader :value
+  attr_reader :front_pointer, :back_pointer
+  attr_accessor :value
 
   def initialize(element)
     @value = element
@@ -27,10 +27,6 @@ class Node
     @back_pointer = nil
   end
 
-  # PROBLEMS WITH THIS METHOD
-  # cannot call assign_back_pointer if there isn't already a pointer there
-  # BUT WHY THO
-  # ANSWER(?) THAT'S THE LL's respnosibility
   def insert_after(other_node)
     # don't need to change @back_pointer
     #x = to be inserted
