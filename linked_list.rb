@@ -1,3 +1,4 @@
+require 'pry'
 require_relative 'node'
 # how should i handle empty lists?
 class LinkedList
@@ -8,6 +9,7 @@ class LinkedList
     @first = nil
   end
 
+  # can I make this faster/better?
   def insert_first(element)
     if @first
       new_first = Node.new(element)
@@ -20,7 +22,9 @@ class LinkedList
   end
 
   def remove_first
-    @first = @first.front_pointer
+    front = @first.front_pointer
+    @first.remove_after
+    front = @first
   end
 
   # recursion, be careful
@@ -53,14 +57,14 @@ class LinkedList
     end
   end
 
-  def get(index, node=@first)
-    counter = 0
+  def get(index, node=@first, counter=0)
+    counter = counter
     if counter == index
       return node
     else
       counter += 1
       node = node.front_pointer
-      get(index, node)
+      get(index, node, counter)
     end
   end
 

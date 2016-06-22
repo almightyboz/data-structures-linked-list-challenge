@@ -1,3 +1,4 @@
+require 'pry'
 require_relative 'linked_list'
 
 describe LinkedList do
@@ -23,7 +24,7 @@ describe LinkedList do
     test_list.insert_first("data")
     test_list.insert_first("tata")
     test_list.remove_first
-    expect(test_list.first.value).to eq("data")
+    expect(test_list.first.value).to eq("tata")
   end
 
   it "finds the last node in the linked list" do
@@ -47,6 +48,7 @@ describe LinkedList do
     test_list.insert_first("Dan Deacon")
     # expect(test_list.get(1).value).to eq("Dan Deacon")
     expect(test_list.get(1).value).to eq("Neutral Milk Hotel")
+    # binding.pry
   end
 
 end
