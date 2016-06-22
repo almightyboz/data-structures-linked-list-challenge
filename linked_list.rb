@@ -1,4 +1,3 @@
-# require 'pry'
 require_relative 'node'
 # how should i handle empty lists?
 class LinkedList
